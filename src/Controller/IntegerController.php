@@ -1,5 +1,5 @@
 <?php
-namespace src\Controller;
+namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -10,7 +10,7 @@ class IntegerController
         for($id = 0; $id < 100; ++$id) {
             if (is_int($id))
             {
-                return $id + "Buzz" ;
+                return $id ;
             }
         }
     }
