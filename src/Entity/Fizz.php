@@ -5,9 +5,9 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\IntegerRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\FizzRepository")
  */
-class Integer
+class Fizz
 {
     /**
      * @ORM\Id()

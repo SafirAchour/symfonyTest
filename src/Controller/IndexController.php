@@ -5,15 +5,15 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class IntegerController extends AbstractController
+class IndexController extends AbstractController
 {
     /**
-     * @Route("/integer", name="integer")
+     * @Route("/", name="index")
      */
     public function index()
     {
-        return $this->render('integer/index.html.twig', [
-            'controller_name' => 'IntegerController',
+        return $this->render('index/index.html.twig', [
+            'controller_name' => 'IndexController',
         ]);
     }
 }
