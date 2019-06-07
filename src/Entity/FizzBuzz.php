@@ -37,4 +37,9 @@ class FizzBuzz
 
         return $this;
     }
+    
+    public function __toString()
+    {
+        return $this->getNumber() . 'FizzBuzz';
+    }
 }

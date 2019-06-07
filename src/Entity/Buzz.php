@@ -37,4 +37,9 @@ class Buzz
 
         return $this;
     }
+    
+    public function __toString()
+    {
+        return $this->getNumber() . 'Buzz';
+    }
 }
