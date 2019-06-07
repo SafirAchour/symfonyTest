@@ -1,7 +1,9 @@
 <?php
 namespace App\Controller;
 
+/*Check unused used statements !!!*/
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 class IntegerController
 {
