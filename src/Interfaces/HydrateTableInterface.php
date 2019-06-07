@@ -21,4 +21,5 @@ interface HydrateTableInterface
      * @return Integer|Fizz|Buzz|FizzBuzz
      */
     function getEntity(int $i);
+    
 }

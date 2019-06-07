@@ -2,21 +2,20 @@
 
 namespace App\Controller;
 
-use App\Entity\Fizz;
-use App\Entity\Integer;
-use App\Interfaces\HydrateTableInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\FizzBuzz;
+use App\Entity\Integer;
 
-class FizzController extends AbstractController implements HydrateTableInterface
+class FizzbuzzController extends AbstractController
 {
     /**
-     * @Route("/fizz", name="fizz_index")
+     * @Route("/fizzbuzz", name="fizzbuzz")
      */
     public function index()
     {
-        return $this->render('fizz/index.html.twig', [
+        return $this->render('fizzbuzz/index.html.twig', [
             'collection' => $this->hydrate()
         ]);
     }
@@ -37,7 +36,7 @@ class FizzController extends AbstractController implements HydrateTableInterface
         $entity = new Integer();
         
         if (($i % 5) === 0) {
-            $entity = new Fizz();
+            $entity = new FizzBuzz();
         }
         
         $entity->setNumber($i);
