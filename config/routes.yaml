@@ -13,3 +13,7 @@ list:
    controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
    defaults: 
       template: 'list.html.twig'
+      
+integerCheck:
+   path: /integer
+   controller: App\Controller\IntegerController::integerCheck
