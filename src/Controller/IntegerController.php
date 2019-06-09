@@ -34,7 +34,7 @@ class IntegerController extends AbstractController
     {
         $entity = new Integer();
         
-        if (($i % 5) === 0) {
+        if (is_int($i)) {
             $entity = new Integer();
         }
         

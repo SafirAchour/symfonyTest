@@ -3,10 +3,10 @@
 {% block title %}Integer{% endblock %}
 
 {% block body %}
-    List Integer
+    List every integer between 1-100 included
     <ul>
         {% for integer in collection %}
-            <li>{{ integer }}</li>
+            <li>{{ integer.number }}</li>
         {% endfor %}
     </ul>
 {% endblock %}

@@ -35,7 +35,7 @@ class FizzbuzzController extends AbstractController
     {
         $entity = new Integer();
         
-        if (($i % 5) === 0) {
+        if ((($i % 5) === 0) && (($i % 3) === 0)) {
             $entity = new FizzBuzz();
         }
         
