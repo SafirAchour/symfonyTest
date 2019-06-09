@@ -2,20 +2,22 @@
 
 namespace App\Controller;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\Common\Collections\ArrayCollection;
 use App\Entity\Integer;
+use App\Entity\Buzz;
 use App\Entity\Fizz;
+use App\Entity\FizzBuzz;
 
-class FizzController extends AbstractController
+class ListController extends AbstractController
 {
     /**
-     * @Route("/fizz", name="fizz")
+     * @Route("/list", name="list")
      */
     public function index()
     {
-        return $this->render('fizz/index.html.twig', [
+        return $this->render('integer/index.html.twig', [
             'collection' => $this->hydrate()
         ]);
     }
@@ -34,9 +36,15 @@ class FizzController extends AbstractController
     public function getEntity(int $i)
     {
         $entity = new Integer();
-        
-        if (($i % 5) === 0) {
+
+        if ((($i % 5) === 0) && (($i % 3) === 0)) {
+            $entity = new FizzBuzz();
+        } elseif (($i % 5) === 0) {
             $entity = new Fizz();
+        } elseif (($i % 3) === 0) {
+            $entity = new Buzz();
+        } else {
+            $entity = new Integer();
         }
         
         $entity->setNumber($i);
