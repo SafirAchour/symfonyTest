@@ -26,7 +26,10 @@ class BuzzController extends AbstractController
     {
         $collection = new ArrayCollection();
         for ($i = 1; $i <= 100; $i++) {
-            $collection->add($this->getEntity($i));
+            if (($i % 3) === 0) {
+                $collection->add($this->getEntity($i));
+            }
+            
         }
         return $collection;
     }
