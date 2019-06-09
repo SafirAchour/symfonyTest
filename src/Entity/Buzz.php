@@ -40,6 +40,6 @@ class Buzz
     
     public function __toString()
     {
-        return $this->getNumber() . 'Buzz';
+        return $this->getNumber() . ' Buzz';
     }
 }

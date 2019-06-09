@@ -40,6 +40,6 @@ class FizzBuzz
     
     public function __toString()
     {
-        return $this->getNumber() . 'FizzBuzz';
+        return $this->getNumber() . ' FizzBuzz';
     }
 }
