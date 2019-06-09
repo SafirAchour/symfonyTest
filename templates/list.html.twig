@@ -4,5 +4,9 @@
 
 {% block body %}
 	This is where you can see the list of the 4 lists
-	
+	 <ul>
+        {% for integer in collection %}
+            <li>{{ integer }}</li>
+        {% endfor %}
+    </ul>
 {% endblock %}
