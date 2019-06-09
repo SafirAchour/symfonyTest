@@ -17,7 +17,7 @@ class ListController extends AbstractController
      */
     public function index()
     {
-        return $this->render('integer/index.html.twig', [
+        return $this->render('list/index.html.twig', [
             'collection' => $this->hydrate()
         ]);
     }
