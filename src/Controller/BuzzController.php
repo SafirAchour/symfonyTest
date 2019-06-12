@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Buzz;
 use App\Entity\Integer;
+use Symfony\Component\HttpFoundation\Response;
 
 class BuzzController extends AbstractController
 {
@@ -32,6 +33,33 @@ class BuzzController extends AbstractController
             
         }
         return $collection;
+    }
+    
+    /**
+     * @Route("/createbuzz", name="create_buzz")
+     */
+    public function createBuzz(): Response
+    {
+        // you can fetch the EntityManager via $this->getDoctrine()
+        // or you can add an argument to the action: createProduct(EntityManagerInterface $entityManager)
+        $entityManager = $this->getDoctrine()->getManager();
+        
+        
+        
+        for ($i = 1; $i <= 100; $i++) {
+            if (($i % 3) === 0) {
+                $buzz = new Buzz();
+                $buzz->setNumber($this->getEntity($i)->getNumber());
+            }
+            
+        }
+        // tell Doctrine you want to (eventually) save the Product (no queries yet)
+        $entityManager->persist($buzz);
+        
+        // actually executes the queries (i.e. the INSERT query)
+        $entityManager->flush();
+        
+        return new Response('Saved new Buzz numbers with id '.$buzz->getId());
     }
     
     public function getEntity(int $i)
