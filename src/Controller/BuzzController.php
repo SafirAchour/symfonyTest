@@ -49,8 +49,6 @@ class BuzzController extends AbstractController
                 
                 // tell Doctrine you want to (eventually) save the Product (no queries yet)
                 $entityManager->persist($buzz);
-                
-                
             }   
           
         }
