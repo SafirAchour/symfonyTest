@@ -40,26 +40,26 @@ class BuzzController extends AbstractController
      */
     public function createBuzz(): Response
     {
-        // you can fetch the EntityManager via $this->getDoctrine()
-        // or you can add an argument to the action: createProduct(EntityManagerInterface $entityManager)
         $entityManager = $this->getDoctrine()->getManager();
-        
-        
-        
+
         for ($i = 1; $i <= 100; $i++) {
             if (($i % 3) === 0) {
                 $buzz = new Buzz();
-                $buzz->setNumber($this->getEntity($i)->getNumber());
-            }
-            
+                $buzz->setNumber($this->getEntity($i)->getNumber($i));
+                
+                // tell Doctrine you want to (eventually) save the Product (no queries yet)
+                $entityManager->persist($buzz);
+                
+                
+            }   
+          
         }
-        // tell Doctrine you want to (eventually) save the Product (no queries yet)
-        $entityManager->persist($buzz);
         
         // actually executes the queries (i.e. the INSERT query)
         $entityManager->flush();
         
-        return new Response('Saved new Buzz numbers with id '.$buzz->getId());
+        return new Response('Saved new Buzz numbers up to id '.$buzz->getId());
+
     }
     
     public function getEntity(int $i)
