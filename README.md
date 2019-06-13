@@ -4,8 +4,11 @@ Instructions:
 
 Pour rappel, le but et d'afficher tous les entiers entre 1 à 100, sauf pour les entiers :
 •	Multiple de 3 et de 5 => remplacer par FizzBuzz
+
 •	Multiple de 5 => remplacer par Fizz
+
 •	Multiple de 3 => Remplacer par Buzz
+
 Cet exercice est un classique de l'algorithmique, vous n'aurez aucun soucis à trouver l'algorithme sur Internet.
 
 
