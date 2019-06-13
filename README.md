@@ -1,5 +1,7 @@
 A technical test using the Symfony Framework and the 'FizzBuzz' algorithm.
 
+
+
 Instructions:
 
 Pour rappel, le but et d'afficher tous les entiers entre 1 à 100, sauf pour les entiers :
@@ -11,6 +13,8 @@ Pour rappel, le but et d'afficher tous les entiers entre 1 à 100, sauf pour les
 •	Multiple de 3 => Remplacer par Buzz
 
 Cet exercice est un classique de l'algorithmique, vous n'aurez aucun soucis à trouver l'algorithme sur Internet.
+
+
 
 
 Simplement, au lieu de les afficher de manière statique, nous allons utiliser Symfony, voici l'énoncé :
