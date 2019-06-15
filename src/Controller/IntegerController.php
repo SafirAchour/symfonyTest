@@ -54,7 +54,7 @@ class IntegerController extends AbstractController
         // actually executes the queries (i.e. the INSERT query)
         $entityManager->flush();
         
-        return new Response('Saved new Integer numbers with ids up to '.$integer->getId());
+        return new Response('Saved new Integer numbers with ids up to '.$integer->getId().' to the DB');
         
     }
     

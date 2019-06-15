@@ -59,7 +59,7 @@ class BuzzController extends AbstractController
         // actually executes the queries (i.e. the INSERT query)
         $entityManager->flush();
         
-        return new Response('Saved new Fizz numbers with ids up to '.$buzz->getId());
+        return new Response('Saved new Fizz numbers with ids up to '.$buzz->getId().' to the DB');
 
     }
     
