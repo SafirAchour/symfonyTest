@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Integer;
 use App\Entity\Fizz;
+use Symfony\Component\HttpFoundation\Response;
 
 class FizzController extends AbstractController
 {
@@ -31,6 +32,31 @@ class FizzController extends AbstractController
             }
         }
         return $collection;
+    }
+    
+    /**
+     * @Route("/createfizz", name="create_fizz")
+     */
+    public function createFizz(): Response
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        
+        for ($i = 1; $i <= 100; $i++) {
+            if (($i % 5) === 0) {
+                $fizz = new Fizz();
+                $fizz->setNumber($this->getEntity($i)->getNumber($i));
+                
+                // tell Doctrine you want to (eventually) save the Product (no queries yet)
+                $entityManager->persist($fizz);
+            }
+            
+        }
+        
+        // actually executes the queries (i.e. the INSERT query)
+        $entityManager->flush();
+        
+        return new Response('Saved new Fizz numbers with ids up to '.$fizz->getId());
+        
     }
     
     public function getEntity(int $i)

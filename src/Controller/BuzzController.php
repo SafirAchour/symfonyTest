@@ -20,6 +20,8 @@ class BuzzController extends AbstractController
             'collection' => $this->hydrate()
         ]);
     }
+    
+    
     /**
      * @return ArrayCollection
      */
@@ -34,6 +36,7 @@ class BuzzController extends AbstractController
         }
         return $collection;
     }
+    
     
     /**
      * @Route("/createbuzz", name="create_buzz")
@@ -56,7 +59,7 @@ class BuzzController extends AbstractController
         // actually executes the queries (i.e. the INSERT query)
         $entityManager->flush();
         
-        return new Response('Saved new Buzz numbers up to id '.$buzz->getId());
+        return new Response('Saved new Fizz numbers with ids up to '.$buzz->getId());
 
     }
     
