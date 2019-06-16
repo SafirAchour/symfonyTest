@@ -29,7 +29,7 @@ class ListEntityRepository extends ServiceEntityRepository
         // the "n" is an alias you'll use in the rest of the query
         $qb = $this->createQueryBuilder('n')
         ->andWhere('n.number > :number')
-        ->setParameter('number', $number)
+        ->setParameter('number', )
         ->orderBy('n.number', 'ASC')
         ->getQuery();
         
