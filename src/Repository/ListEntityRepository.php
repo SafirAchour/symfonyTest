@@ -19,9 +19,30 @@ class ListEntityRepository extends ServiceEntityRepository
         parent::__construct($registry, ListEntity::class);
     }
 
+    /**
+     * @param $price
+     * @return ListEntity[]
+     */
+    public function findAllGreaterThanPrice($number): array
+    {
+        // automatically knows to select Numbers
+        // the "n" is an alias you'll use in the rest of the query
+        $qb = $this->createQueryBuilder('n')
+        ->andWhere('n.number > :number')
+        ->setParameter('number', $number)
+        ->orderBy('n.number', 'ASC')
+        ->getQuery();
+        
+        return $qb->execute();
+        
+        // to get just one result:
+        // $product = $qb->setMaxResults(1)->getOneOrNullResult();
+    }
+}
     // /**
     //  * @return ListEntity[] Returns an array of ListEntity objects
     //  */
+
     /*
     public function findByExampleField($value)
     {
@@ -47,4 +68,4 @@ class ListEntityRepository extends ServiceEntityRepository
         ;
     }
     */
-}
+

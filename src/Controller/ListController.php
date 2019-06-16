@@ -9,6 +9,7 @@ use App\Entity\Integer;
 use App\Entity\Buzz;
 use App\Entity\Fizz;
 use App\Entity\FizzBuzz;
+use App\Entity\ListEntity;
 
 class ListController extends AbstractController
 {
@@ -50,5 +51,19 @@ class ListController extends AbstractController
         $entity->setNumber($i);
         
         return $entity;
+    }
+    
+    /**
+     * @Route("/test", name="test")
+     */
+    public function dbTest()
+    {
+    $minNum = 1;
+    
+    $products = $this->getDoctrine()
+    ->getRepository(ListEntity::class)
+    ->findAllGreaterThanPrice($minNum);
+    
+    return $products;
     }
 }
