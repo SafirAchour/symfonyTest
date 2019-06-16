@@ -20,10 +20,10 @@ class ListEntityRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param $price
+     * @param $number
      * @return ListEntity[]
      */
-    public function findAllGreaterThanPrice($number): array
+    public function findAll(): array
     {
         // automatically knows to select Numbers
         // the "n" is an alias you'll use in the rest of the query

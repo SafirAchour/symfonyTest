@@ -59,11 +59,12 @@ class ListController extends AbstractController
     public function dbTest()
     {
     $minNum = 1;
+    $entity = new ListEntity();
     
     $products = $this->getDoctrine()
     ->getRepository(ListEntity::class)
-    ->findAllGreaterThanPrice($minNum);
+    ->findAll($minNum);
     
-    return $products;
+    return $entity;
     }
 }
