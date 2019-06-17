@@ -62,7 +62,7 @@ class ListController extends AbstractController
     
     $numbers = $this->getDoctrine()
     ->getRepository(ListEntity::class)
-    ->findAllIntegersTest($minNum);
+    ->findAllValues($minNum);
     
     return $numbers;
     }
