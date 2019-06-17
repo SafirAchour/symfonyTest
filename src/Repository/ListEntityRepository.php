@@ -28,9 +28,9 @@ class ListEntityRepository extends ServiceEntityRepository
         $entityManager = $this->getEntityManager();
         
         $query = $entityManager->createQuery(
-            'SELECT *
+            'SELECT i 
             FROM App\Entity\Integer i, App\Entity\Fizz f, App\Entity\Buzz b, App\Entity\FizzBuzz fb
-            ORDER BY number ASC'
+            ORDER BY i.number ASC'
             );
             
             // returns an array of Product objects
