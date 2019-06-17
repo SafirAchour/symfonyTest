@@ -23,20 +23,18 @@ class ListEntityRepository extends ServiceEntityRepository
      * @param $number
      * @return ListEntity[]
      */
-    public function findAll(): array
+    public function findAllIntegersTest($number): array
     {
-        // automatically knows to select Numbers
-        // the "n" is an alias you'll use in the rest of the query
-        $qb = $this->createQueryBuilder('n')
-        ->andWhere('n.number > :number')
-        ->setParameter('number', )
-        ->orderBy('n.number', 'ASC')
-        ->getQuery();
+        $entityManager = $this->getEntityManager();
         
-        return $qb->execute();
-        
-        // to get just one result:
-        // $product = $qb->setMaxResults(1)->getOneOrNullResult();
+        $query = $entityManager->createQuery(
+            'SELECT n
+            FROM App\Entity\Fizz n
+            ORDER BY n.number ASC'
+            );
+            
+            // returns an array of Product objects
+            return $query->execute();
     }
 }
     // /**

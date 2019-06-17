@@ -60,10 +60,10 @@ class ListController extends AbstractController
     {
     $minNum = 1;
     
-    $products = $this->getDoctrine()
+    $numbers = $this->getDoctrine()
     ->getRepository(ListEntity::class)
-    ->findAll($minNum);
+    ->findAllIntegersTest($minNum);
     
-    return $products;
+    return $numbers;
     }
 }
