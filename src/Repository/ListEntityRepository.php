@@ -23,13 +23,13 @@ class ListEntityRepository extends ServiceEntityRepository
      * @param $number
      * @return ListEntity[]
      */
-    public function findAllValues(): array
+    public function findBy(array $query, array $orderBy = null, $limit = null, $offset = null)
     {
         $entityManager = $this->getEntityManager();
         
         $query = $entityManager->createQuery(
-            'SELECT i 
-            FROM App\Entity\Integer i, App\Entity\Fizz f, App\Entity\Buzz b, App\Entity\FizzBuzz fb
+            'SELECT i.number
+            FROM App\Entity\Integer i
             ORDER BY i.number ASC'
             );
             
