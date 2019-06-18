@@ -23,7 +23,7 @@ class ListEntityRepository extends ServiceEntityRepository
      * @param $number
      * @return ListEntity[]
      */
-    public function findBy(array $query, array $orderBy = null, $limit = null, $offset = null)
+    public function findAll()
     {
         $entityManager = $this->getEntityManager();
         

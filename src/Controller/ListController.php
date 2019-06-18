@@ -62,8 +62,8 @@ class ListController extends AbstractController
     
     $numbers = $this->getDoctrine()
     ->getRepository(ListEntity::class)
-    ->findBy();
+    ->findAll();
     
-    return $numbers;
+    return serialize($numbers);
     }
 }
