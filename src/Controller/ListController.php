@@ -59,11 +59,16 @@ class ListController extends AbstractController
      */
     public function dbTest()
     {
-    
+        
+        
     $numbers = $this->getDoctrine()
     ->getRepository(ListEntity::class)
     ->findAll();
+    $numbers = new Response();
+    $numbers->setNumber($numbers);
     
-    return serialize($numbers);
+    
+    
+     return json_encode($numbers);
     }
 }
