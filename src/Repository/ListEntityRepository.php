@@ -27,6 +27,8 @@ class ListEntityRepository extends ServiceEntityRepository
     {
         $entityManager = $this->getEntityManager();
         
+        
+        // TRY INNER JOIN 
         $query = $entityManager->createQuery(
             'SELECT i.number, f.number
             FROM App\Entity\Integer i, App\Entity\Fizz f
