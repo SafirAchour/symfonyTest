@@ -36,6 +36,26 @@ class ListEntityRepository extends ServiceEntityRepository
             // returns an array of Product objects
             return $query->execute();
     }
+    
+    
+    /**
+     * @param $number
+     * @return ListEntity[]
+     */
+    public function findNum($numbers): array
+    {
+        // automatically knows to select Products
+        // the "p" is an alias you'll use in the rest of the query
+        $qb = $this->createQueryBuilder('n')
+        ->setParameter('number', $numbers)
+        ->orderBy('n.number', 'ASC')
+        ->getQuery();
+        
+        return $qb->execute();
+        
+        // to get just one result:
+        // $product = $qb->setMaxResults(1)->getOneOrNullResult();
+    }
 }
     // /**
     //  * @return ListEntity[] Returns an array of ListEntity objects
