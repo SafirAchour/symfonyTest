@@ -23,14 +23,14 @@ class ListEntityRepository extends ServiceEntityRepository
      * @param $number
      * @return ListEntity[]
      */
-    public function findAll()
+    public function findInts()
     {
         $entityManager = $this->getEntityManager();
         
         $query = $entityManager->createQuery(
-            'SELECT i.number
-            FROM App\Entity\Integer i
-            ORDER BY i.number ASC'
+            'SELECT i.number, f.number
+            FROM App\Entity\Integer i, App\Entity\Fizz f
+            ORDER BY i.number, f.number ASC'
             );
             
             // returns an array of Product objects

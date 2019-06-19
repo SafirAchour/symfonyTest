@@ -11,6 +11,8 @@ use App\Entity\Buzz;
 use App\Entity\Fizz;
 use App\Entity\FizzBuzz;
 use App\Entity\ListEntity;
+use Symfony\Component\HttpFoundation\Request;
+use App\Repository\ListEntityRepository;
 
 class ListController extends AbstractController
 {
@@ -54,20 +56,20 @@ class ListController extends AbstractController
         return $entity;
     }
     
+
+    
     /**
      * @Route("/test", name="test")
      */
-    public function dbTest()
-    {
+    public function getUsers(Request $request){
+        $numbers = $this->getDoctrine()
+        ->getRepository(ListEntity::class)
+        ->findInts();
         
+        $serializer = $this->get('serializer');
+        $data = $serializer->serialize($numbers, 'json');
         
-    $numbers = $this->getDoctrine()
-    ->getRepository(ListEntity::class)
-    ->findAll();
-    $response = new Response();
-    
-    
-    
-     return json_encode($numbers);
+        return new Response($data);
     }
+    
 }
