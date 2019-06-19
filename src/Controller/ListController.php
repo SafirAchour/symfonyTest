@@ -65,7 +65,7 @@ class ListController extends AbstractController
     ->getRepository(ListEntity::class)
     ->findAll();
     $response = new Response();
-    $response->setNumber()->$numbers ;
+    
     
     
      return json_encode($numbers);
