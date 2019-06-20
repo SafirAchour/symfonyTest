@@ -29,6 +29,7 @@ class ListEntityRepository extends ServiceEntityRepository
         
         
         // TRY INNER JOIN 
+        // Check Order By
         $query = $entityManager->createQuery(
             'SELECT i.number, f.number
             FROM App\Entity\Integer i, App\Entity\Fizz f

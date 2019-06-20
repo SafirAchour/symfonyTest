@@ -66,6 +66,7 @@ class ListController extends AbstractController
         ->getRepository(ListEntity::class)
         ->findInts();
         
+        // Try add toString to $numbers
         $serializer = $this->get('serializer');
         $data = $serializer->serialize($numbers, 'json');
         
