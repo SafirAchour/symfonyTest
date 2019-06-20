@@ -61,10 +61,10 @@ class ListController extends AbstractController
     /**
      * @Route("/test", name="test")
      */
-    public function getUsers(Request $request){
+    public function getNumbers(Request $request){
         $numbers = $this->getDoctrine()
         ->getRepository(ListEntity::class)
-        ->findInts();
+        ->findInts($this);
         
         // Try add toString to $numbers
         $serializer = $this->get('serializer');
@@ -73,4 +73,15 @@ class ListController extends AbstractController
         return new Response($data);
     }
     
+    /**
+     * @Route("/test2", name="test2")
+     */
+    public function getNumSql(Request $request) {
+        $data = $this->getDoctrine()
+        ->getRepository(ListEntity::class)
+        ->findSql();
+        
+        return new Response($data);   
+    }
 }
+

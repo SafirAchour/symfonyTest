@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\ListEntity;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\ORM\Query;
 
 /**
  * @method ListEntity|null find($id, $lockMode = null, $lockVersion = null)
@@ -27,30 +28,32 @@ class ListEntityRepository extends ServiceEntityRepository
     {
         $entityManager = $this->getEntityManager();
         
-        
         // TRY INNER JOIN 
         // Check Order By
         $query = $entityManager->createQuery(
-            'SELECT i.number, f.number
-            FROM App\Entity\Integer i, App\Entity\Fizz f
-            ORDER BY i.number, f.number ASC'
-            );
+            'SELECT i.number
+            FROM App\Entity\Integer i
+            ORDER BY i.number ASC
+            '
             
+            );
+        // ORDER BY i.number, f.number ASC
+        
+        
             // returns an array of Product objects
             return $query->execute();
     }
-    
+
     
     /**
      * @param $number
      * @return ListEntity[]
      */
-    public function findNum($numbers): array
+    public function findNum(): array
     {
         // automatically knows to select Products
         // the "p" is an alias you'll use in the rest of the query
         $qb = $this->createQueryBuilder('n')
-        ->setParameter('number', $numbers)
         ->orderBy('n.number', 'ASC')
         ->getQuery();
         
@@ -58,6 +61,21 @@ class ListEntityRepository extends ServiceEntityRepository
         
         // to get just one result:
         // $product = $qb->setMaxResults(1)->getOneOrNullResult();
+    }
+    
+    public function findSql(): array
+    {
+        $conn = $this->getEntityManager()->getConnection();
+        
+        $sql = '
+        SELECT * FROM integer i
+        ';
+        $stmt = $conn->prepare($sql);
+        $stmt->execute(['number' => $this]);
+        $stmt->__toString();
+        
+        // returns an array of arrays (i.e. a raw data set)
+        return $stmt->fetchAll();
     }
 }
     // /**
