@@ -81,7 +81,10 @@ class ListController extends AbstractController
         ->getRepository(ListEntity::class)
         ->findSql();
         
-        return new Response($data);   
+        $data->toString();
+        return new Response($data);  
+        //Catchable Fatal Error: Object of class App\Repository\ListEntityRepository could not be converted to string
+        
     }
 }
 
