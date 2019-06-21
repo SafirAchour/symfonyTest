@@ -80,7 +80,7 @@ class ListController extends AbstractController
         $data = $this->getDoctrine()
         ->getRepository(ListEntity::class)
         ->findSql();
-        
+        // $id and $number are undefined variables 
         $data->toString();
         return new Response($data);  
         //Catchable Fatal Error: Object of class App\Repository\ListEntityRepository could not be converted to string

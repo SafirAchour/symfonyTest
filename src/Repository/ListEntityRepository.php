@@ -35,12 +35,8 @@ class ListEntityRepository extends ServiceEntityRepository
             FROM App\Entity\Integer i
             ORDER BY i.number ASC
             '
-            
             );
-        // ORDER BY i.number, f.number ASC
-        
-        
-            // returns an array of Product objects
+            // returns an array of Number objects
             return $query->execute();
     }
 
@@ -57,8 +53,7 @@ class ListEntityRepository extends ServiceEntityRepository
         ->orderBy('n.number', 'ASC')
         ->getQuery();
         
-        return $qb->execute();
-        
+        return $qb->execute();  
         // to get just one result:
         // $product = $qb->setMaxResults(1)->getOneOrNullResult();
     }
@@ -68,6 +63,7 @@ class ListEntityRepository extends ServiceEntityRepository
      * @return ListEntity[]
      */
     public function findSql(): array
+    // $id and $number are undefined variables
     {
         $conn = $this->getEntityManager()->getConnection();
         
