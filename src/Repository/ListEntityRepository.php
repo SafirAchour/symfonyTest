@@ -63,6 +63,10 @@ class ListEntityRepository extends ServiceEntityRepository
         // $product = $qb->setMaxResults(1)->getOneOrNullResult();
     }
     
+    /**
+     * @param $number
+     * @return ListEntity[]
+     */
     public function findSql(): array
     {
         $conn = $this->getEntityManager()->getConnection();
@@ -72,7 +76,7 @@ class ListEntityRepository extends ServiceEntityRepository
         ';
         $stmt = $conn->prepare($sql);
         $stmt->execute(['number' => $this]);
-        $stmt->__toString();
+        $stmt->toString();
         
         // returns an array of arrays (i.e. a raw data set)
         return $stmt->fetchAll();
