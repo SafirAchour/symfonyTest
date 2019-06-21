@@ -13,6 +13,7 @@ use App\Entity\FizzBuzz;
 use App\Entity\ListEntity;
 use Symfony\Component\HttpFoundation\Request;
 use App\Repository\ListEntityRepository;
+use Symfony\Component\Validator\Tests\Fixtures\ToString;
 
 class ListController extends AbstractController
 {
@@ -79,9 +80,9 @@ class ListController extends AbstractController
     public function getNumSql(Request $request) {
         $data = $this->getDoctrine()
         ->getRepository(ListEntity::class)
-        ->findSql();
+        ->findNum();
         // $id and $number are undefined variables 
-        $data->toString();
+        __toString($data);
         return new Response($data);  
         //Catchable Fatal Error: Object of class App\Repository\ListEntityRepository could not be converted to string
         

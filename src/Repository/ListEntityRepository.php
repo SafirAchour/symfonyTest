@@ -49,14 +49,15 @@ class ListEntityRepository extends ServiceEntityRepository
     {
         // automatically knows to select Products
         // the "p" is an alias you'll use in the rest of the query
-        $qb = $this->createQueryBuilder('n')
-        ->orderBy('n.number', 'ASC')
+        $qb = $this->createQueryBuilder('i')
+        ->orderBy('i.number', 'ASC')
         ->getQuery();
         
         return $qb->execute();  
         // to get just one result:
         // $product = $qb->setMaxResults(1)->getOneOrNullResult();
     }
+    
     
     /**
      * @param $number
